@@ -14,7 +14,7 @@ const stories = [
 {
     name: "Jeff Bezos",
     src: "https://links.papareact.com/k2j",
-    profile: "https://links.papareact.com/fop",
+    profile: "https://links.papareact.com/f0p",
 },
 {
     name: "Mark Zuckerberg",
@@ -34,14 +34,15 @@ const stories = [
 function Stories() {
 return (
     <div className="flex justify-center space-x-3 mx-auto">
-    {stories.map((story) => {
+
+    {stories.map((story) => (
         <StoryCard
         key={story.src}
         name={story.name}
         src={story.src}
         profile={story.profile}
-        />;
-    })}
+        />
+))}
     </div>
 );
 }

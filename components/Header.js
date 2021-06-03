@@ -61,14 +61,14 @@ return (
         {/* Profile Pic */}
 
         <Image 
-            onClick={signOut}
+            onClick={()=> signOut()}
             className="rounded-full cursor-pointer"
             src={session.user.image}
             width='40'
             height='40'
             layout='fixed'
         />
-        <p className='whitespace-nowrap font semi-bold pr-3'>
+        <p className='hidden lg:inline-flex text-sm whitespace-nowrap font-semibold pr-3'>
             {session.user.name}
         </p>
         <ViewGridIcon className='icon'/>
