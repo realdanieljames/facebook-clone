@@ -1,28 +1,40 @@
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
-import Post from "./Post"
+import Post from "./Post";
 // ==========================================================//
 // get the information that was pushed to firebase
 //react firebase hooks
 
-function Posts() {
+function Posts({posts}) {
 const [realtimePosts] = useCollection(
     db.collection("posts").orderBy("timestamp", "desc")
 );
 return (
     <div>
     {/* gives a list of docs to map through */}
-    {realtimePosts?.docs.map((post) => (
-        <Post
-        key={post.id}
-        name={post.data().name}
-        message={post.data().message}
-        email={post.data().email}
-        timestamp={post.data().timestamp}
-        image={post.data().image}
-        postImage={post.data().postImage}
-        />
-    ))}
+    {realtimePosts
+        ? realtimePosts?.docs.map((post) => (
+            <Post
+            key={post.id}
+            name={post.data().name}
+            message={post.data().message}
+            email={post.data().email}
+            timestamp={post.data().timestamp}
+            image={post.data().image}
+            postImage={post.data().postImage}
+            />
+        ))
+        : posts.map((post) => (
+            <Post
+            key={post.id}
+            name={post.name}
+            message={post.message}
+            email={post.email}
+            timestamp={post.timestamp}
+            image={post.image}
+            postImage={post.postImage}
+            />
+        ))}
     </div>
 );
 }

@@ -1,5 +1,6 @@
 import {SearchIcon} from "@heroicons/react/outline"
 import {DotsHorizontalIcon, VideoCameraIcon} from "@heroicons/react/solid"
+import Contact from "./Contact"
 
 
 
@@ -27,6 +28,9 @@ function Widgets() {
                     
                 </div>
             </div>
+            {contacts.map((contact) =>(
+        <Contact key={contact.src} src={contact.src} name={contact.name}/>
+      ))}
         </div>
     )
 }
